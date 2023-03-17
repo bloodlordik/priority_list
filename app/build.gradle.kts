@@ -1,4 +1,4 @@
-@Suppress("UnstableApiUsage")
+@file:Suppress("UnstableApiUsage")
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -17,16 +17,20 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            @Suppress("UnstableApiUsage")
+
             useSupportLibrary = true
         }
     }
 
     buildTypes {
         release {
-            @Suppress("UnstableApiUsage")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        debug {
             isMinifyEnabled = false
-            proguardFiles(@Suppress("UnstableApiUsage") getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
@@ -36,18 +40,18 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    @Suppress("UnstableApiUsage")
+
     buildFeatures {
         compose = true
     }
-    @Suppress("UnstableApiUsage")
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    @Suppress("UnstableApiUsage")
+
     packagingOptions {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
 }
