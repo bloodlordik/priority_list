@@ -1,5 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 pluginManagement {
+   // includeBuild("plugins")
     repositories {
         google()
         mavenCentral()
@@ -13,6 +14,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+
+
 }
 rootProject.name = "Priority list"
 include(":app")
