@@ -9,5 +9,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object Variables{
-
+    @Provides
+    fun getText():String = "VewModel text"
 }

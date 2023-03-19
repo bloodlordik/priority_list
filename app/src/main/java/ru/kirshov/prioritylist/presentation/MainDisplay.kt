@@ -10,15 +10,16 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import ru.kirshov.prioritylist.domain.AppViewModel
 
 
 @Composable
-fun MainDisplay(){
+fun MainDisplay(viewModel: AppViewModel){
     BottomSheetScaffold(sheetContent = {}, modifier = Modifier.fillMaxSize()) { paddingValues ->
         Box(modifier = Modifier
             .padding(paddingValues)
             .fillMaxSize()){
-            Text(text = "hello scafold")
+            Text(text = viewModel.title())
         }        
         
     }
