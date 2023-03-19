@@ -9,6 +9,5 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object Variables{
-    @Provides
-    fun text():String = "Hilt hello"
+
 }
