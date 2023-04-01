@@ -2,8 +2,8 @@
 # Define the dependency versions
 compose = "1.4.0"
 core_ktx = "1.9.0"
-life_ktx = "2.6.0"
-activity_compose = "1.6.1"
+life_ktx = "2.6.1"
+activity_compose = "1.7.0"
 material_compose = "1.4.0"
 junit = "4.13.2"
 android_junit = "junit:1.1.5"

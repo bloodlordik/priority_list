@@ -2,10 +2,10 @@
 
 package ru.kirshov.prioritylist.presentation
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -17,7 +17,14 @@ import ru.kirshov.prioritylist.domain.AppViewModel
 fun MainDisplay(viewModel: AppViewModel) {
     val bottomState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     val scaffoldState = rememberScaffoldState()
-    val coroutineScope = rememberCoroutineScope()
+    val modalState by viewModel.modalState.collectAsState()
+    LaunchedEffect(key1 = modalState){
+        if (modalState){
+            bottomState.show()
+            //loh pidr
+        }
+
+    }
     ModalBottomSheetLayout(
         sheetContent = {
                        Text(text = "Modal sheet")
@@ -25,10 +32,16 @@ fun MainDisplay(viewModel: AppViewModel) {
         modifier = Modifier.fillMaxSize(),
         sheetState = bottomState
     ) {
+
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             scaffoldState = scaffoldState,
-            bottomBar = { AppBottomBar() }
+            bottomBar = { AppBottomBar(
+                showAddMenu = viewModel::showAddMenu,
+                showEditPageMenu = viewModel::showEditMenu,
+                showPageListMenu = viewModel::showListPageMenu,
+                showSortMenu = viewModel::showSortMenu
+            ) }
         ) { paddingValues ->
             Box(modifier = Modifier
                 .padding(paddingValues)
